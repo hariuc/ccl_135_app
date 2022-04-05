@@ -19,8 +19,6 @@ class EmailService {
     required String text,
     String? html,
   }) async {
-    /*final userName = 'hariuc@mail.ru';
-    final password = 'A2yqBRXrDnSs7YNfvSLv';*/
     final sharedPref = await GetIt.instance.get<Future<SharedPreferences>>();
     final userEmail = sharedPref
         .getString(SharedPreferencesConstants.userEmailKey.userEmailKey);

@@ -441,8 +441,8 @@
         <entry key="path">
           <value>
             <list>
-              <option value="$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0/lib" />
               <option value="$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.1/lib" />
+              <option value="$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0/lib" />
             </list>
           </value>
         </entry>
