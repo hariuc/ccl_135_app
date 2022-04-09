@@ -1,7 +1,4 @@
-import 'package:ccl_135/bloc/email_bloc/email_bloc.dart';
-import 'package:ccl_135/bloc/email_bloc/email_event.dart';
 import 'package:ccl_135/bloc/receipt_bloc/bloc_receipt.dart';
-import 'package:ccl_135/bloc/receipt_bloc/event_receipt.dart';
 import 'package:ccl_135/presentation/pages/setting_page/receipt_settings/send_form_page.dart';
 import 'package:ccl_135/presentation/pages/widgets/widget_utils.dart';
 import 'package:file_picker/file_picker.dart';
@@ -52,17 +49,13 @@ class ReceiptSettings extends StatelessWidget {
         final path = result.files.single.path;
         if (path != null) {
           final blocProvider = BlocProvider.of<BlocReceipt>(context);
-          blocProvider.add(UploadReceiptEvent(pathStr: path));
+          blocProvider.add(EventReceiptUploadEvent(pathStr: path));
         }
       }
     } catch (e) {}
   }
 
   void onPressed({required BuildContext context}) async {
-    // final blocProvider = BlocProvider.of<EmailBloc>(context);
-    // blocProvider.add(SendAllEmailEvent(date1Str: DateTime(2021,11, 1).toIso8601String(), date2Str: DateTime(2021,11, 30).toIso8601String()));
-
-    await Navigator.push(
-        context, MaterialPageRoute(builder: (context) => SendFormPage()));
+    await Navigator.push(context, MaterialPageRoute(builder: (context) => SendFormPage()));
   }
 }

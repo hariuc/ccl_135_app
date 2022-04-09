@@ -1,6 +1,4 @@
 import 'package:ccl_135/bloc/email_bloc/email_bloc.dart';
-import 'package:ccl_135/bloc/email_bloc/email_event.dart';
-import 'package:ccl_135/bloc/email_bloc/email_state.dart';
 import 'package:ccl_135/presentation/pages/widgets/dialogs_and_messages.dart';
 import 'package:common/html_utils.dart';
 import 'package:domain/modules/personal_account/entities/personal_account_entity.dart';
@@ -325,7 +323,7 @@ class ReceiptDetailPage extends StatelessWidget {
 
   void pressButtonSendEmail(
       {required BuildContext context, required ReceiptEntity receiptEntity}) async {
-    final blocProvider = BlocProvider.of<EmailBloc>(context);
+
     final text = 'Bon de plata';
     final html = HtmlUtils.createHtmlText(
         personalAccountEntity: personalAccountEntity, receiptEntity: receiptEntity);
@@ -334,18 +332,19 @@ class ReceiptDetailPage extends StatelessWidget {
           DialogsAndMessages.showSnackBar('Необходимо заполнить email', () {}, '') as SnackBar;
       ScaffoldMessenger.of(context).showSnackBar(snackBar1);
     } else {
+      final blocProvider = BlocProvider.of<EmailBloc>(context);
       blocProvider
-          .add(SendEmailEvent(text: text, recipients: [email], subject: 'CCL 135', html: html));
+          .add(EmailEventSendEmail(text: text, recipients: [email], subject: 'CCL 135', html: html));
     }
 
-    final state = blocProvider.state;
-    var message = '';
-    if (state is SuccessfullyEmailState) {
-      message = "Письмо успешно отправлено";
-    } else if (state is ErrorEmailState) {
-      message = "При отправке письма произошла ошибка.";
-    }
-    final snackBarMessage = DialogsAndMessages.showSnackBar(message, () {}, '') as SnackBar;
-    ScaffoldMessenger.of(context).showSnackBar(snackBarMessage);
+    // final state = blocProvider.state;
+    // var message = '';
+    // if (state is EmailState.successfully()) {
+    //   message = "Письмо успешно отправлено";
+    // } else if (state is ErrorEmailState) {
+    //   message = "При отправке письма произошла ошибка.";
+    // }
+    // final snackBarMessage = DialogsAndMessages.showSnackBar(message, () {}, '') as SnackBar;
+    // ScaffoldMessenger.of(context).showSnackBar(snackBarMessage);
   }
 }

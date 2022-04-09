@@ -1,81 +1,82 @@
 import 'dart:async';
 
-import 'package:ccl_135/bloc/personal_acount_bloc/event_personal_account.dart';
-import 'package:ccl_135/bloc/personal_acount_bloc/state_personal_account.dart';
+import 'package:domain/modules/personal_account/entities/personal_account_entity.dart';
 import 'package:domain/modules/personal_account/repository/personal_account_repository.dart';
-import 'package:domain/modules/personal_account/usecases/delete_personal_account_usecase.dart';
-import 'package:domain/modules/personal_account/usecases/get_personal_account_list_usecase.dart';
-import 'package:domain/modules/personal_account/usecases/insert_personal_account_usecase.dart';
-import 'package:domain/modules/personal_account/usecases/update_personal_account_usecase.dart';
-import 'package:domain/modules/personal_account/usecases/upload_personal_account_data_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'bloc_personal_account.freezed.dart';
+
+part 'event_personal_account.dart';
+
+part 'state_personal_account.dart';
 
 class BlocPersonalAccount extends Bloc<EventPersonalAccount, StatePersonalAccount> {
   final PersonalAccountRepository repository;
 
   BlocPersonalAccount({
     required this.repository,
-  }) : super(PersonalAccountEmptyState()) {
-    on<PersonalAccountLoadEvent>(_loadEvent);
-    on<PersonalAccountInsertEvent>(_insertEvent);
-    on<PersonalAccountUpdateEvent>(_updateEvent);
-    on<PersonalAccountDeleteEvent>(_deleteEvent);
-    on<UploadPersonalAccountEvent>(_uploadEvent);
+  }) : super(StatePersonalAccount.empty()) {
+    on<EventPersonalAccountLoadEvent>(_loadEvent);
+    on<EventPersonalAccountInsertEvent>(_insertEvent);
+    on<EventPersonalAccountUpdateEvent>(_updateEvent);
+    on<EventPersonalAccountDeleteEvent>(_deleteEvent);
+    on<EventPersonalAccountUploadEvent>(_uploadEvent);
   }
 
   FutureOr<void> _loadEvent(
-      PersonalAccountLoadEvent event, Emitter<StatePersonalAccount> emitter) async {
-    emit(PersonalAccountLoading());
+      EventPersonalAccountLoadEvent event, Emitter<StatePersonalAccount> emitter) async {
+    emit(StatePersonalAccount.loading());
     try {
       final list = await repository.getPersonalAccounts(id: event.id);
-      emit(PersonalAccountLoaded(list: list));
+      emit(StatePersonalAccount.loaded(list: list));
     } catch (e) {
-      emit(PersonalAccountError(message: '${e.toString()}'));
+      emit(StatePersonalAccount.error(message: 'ERROR: ${e.toString()}'));
     }
   }
 
   FutureOr<void> _insertEvent(
-      PersonalAccountInsertEvent event, Emitter<StatePersonalAccount> emitter) async {
-    emit(PersonalAccountLoading());
+      EventPersonalAccountInsertEvent event, Emitter<StatePersonalAccount> emitter) async {
+    emit(StatePersonalAccount.loading());
     try {
       await repository.insertUsecase(personalAccountEntity: event.item);
       final list = await repository.getPersonalAccounts(id: event.id);
-      emit(PersonalAccountLoaded(list: list));
+      emit(StatePersonalAccount.loaded(list: list));
     } catch (e) {
-      emit(PersonalAccountError(message: '${e.toString()}'));
+      emit(StatePersonalAccount.error(message: 'ERROR: ${e.toString()}'));
     }
   }
 
   FutureOr<void> _updateEvent(
-      PersonalAccountUpdateEvent event, Emitter<StatePersonalAccount> emitter) async {
-    emit(PersonalAccountLoading());
+      EventPersonalAccountUpdateEvent event, Emitter<StatePersonalAccount> emitter) async {
+    emit(StatePersonalAccount.loading());
     try {
       await repository.updateUsecase(personalAccountEntity: event.item);
       final list = await repository.getPersonalAccounts(id: event.id);
-      emit(PersonalAccountLoaded(list: list));
+      emit(StatePersonalAccount.loaded(list: list));
     } catch (e) {
-      emit(PersonalAccountError(message: '${e.toString()}'));
+      emit(StatePersonalAccount.error(message: 'ERROR: ${e.toString()}'));
     }
   }
 
   FutureOr<void> _deleteEvent(
-      PersonalAccountDeleteEvent event, Emitter<StatePersonalAccount> emitter) async {
-    emit(PersonalAccountLoading());
+      EventPersonalAccountDeleteEvent event, Emitter<StatePersonalAccount> emitter) async {
+    emit(StatePersonalAccount.loading());
     try {
       await repository.deleteUsecase(personalAccountEntity: event.item);
       final list = await repository.getPersonalAccounts(id: event.id);
-      emit(PersonalAccountLoaded(list: list));
+      emit(StatePersonalAccount.loaded(list: list));
     } catch (e) {
-      emit(PersonalAccountError(message: '${e.toString()}'));
+      emit(StatePersonalAccount.error(message: 'ERROR: ${e.toString()}'));
     }
   }
 
   FutureOr<void> _uploadEvent(
-      UploadPersonalAccountEvent event, Emitter<StatePersonalAccount> emitter) async {
+      EventPersonalAccountUploadEvent event, Emitter<StatePersonalAccount> emitter) async {
     try {
       await repository.uploadDataUsecase(pathStr: event.pathStr);
     } catch (e) {
-      emit(PersonalAccountError(message: '${e.toString()}'));
+      emit(StatePersonalAccount.error(message: 'ERROR: ${e.toString()}'));
     }
   }
 }

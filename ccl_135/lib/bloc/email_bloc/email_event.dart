@@ -1,21 +1,15 @@
-abstract class EmailEvent {}
 
-class SendEmailEvent extends EmailEvent {
-  final List<String> recipients;
-  final String subject;
-  final String text;
-  String? html;
+part of 'email_bloc.dart';
 
-  SendEmailEvent(
-      {required this.recipients,
-      required this.subject,
-      required this.text,
-      this.html});
-}
+@freezed
+class EmailEvent with _$EmailEvent {
+  const factory EmailEvent.sendEmail({
+    required List<String> recipients,
+    required String subject,
+    required String text,
+    String? html,
+  }) = EmailEventSendEmail;
 
-class SendAllEmailEvent extends EmailEvent {
-  final String date1Str;
-  final String date2Str;
-
-  SendAllEmailEvent({required this.date1Str, required this.date2Str});
+  const factory EmailEvent.sendAllEmails({required String date1Str, required String date2Str}) =
+      EmailEventSendAllEmails;
 }

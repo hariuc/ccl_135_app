@@ -291,6 +291,20 @@
             </list>
           </value>
         </entry>
+        <entry key="freezed">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/freezed-1.1.1/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="freezed_annotation">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/freezed_annotation-1.1.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="frontend_server_client">
           <value>
             <list>
@@ -872,6 +886,8 @@
       <root url="file://$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_bloc-8.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-1.0.4/lib" />
       <root url="file://$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.5/lib" />
+      <root url="file://$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/freezed-1.1.1/lib" />
+      <root url="file://$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/freezed_annotation-1.1.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/frontend_server_client-2.1.2/lib" />
       <root url="file://$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/get_it-7.2.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/glob-2.0.2/lib" />

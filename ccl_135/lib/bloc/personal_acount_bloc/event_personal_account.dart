@@ -1,35 +1,18 @@
-import 'package:domain/modules/personal_account/entities/personal_account_entity.dart';
+part of 'bloc_personal_account.dart';
 
-abstract class EventPersonalAccount {}
+@freezed
+class EventPersonalAccount with _$EventPersonalAccount {
+  const factory EventPersonalAccount.load({required int id}) = EventPersonalAccountLoadEvent;
 
-class PersonalAccountLoadEvent extends EventPersonalAccount {
-  final int id;
+  const factory EventPersonalAccount.insert(
+      {required int id, required PersonalAccountEntity item}) = EventPersonalAccountInsertEvent;
 
-  PersonalAccountLoadEvent({required this.id});
-}
+  const factory EventPersonalAccount.update(
+      {required int id, required PersonalAccountEntity item}) = EventPersonalAccountUpdateEvent;
 
-class PersonalAccountInsertEvent extends EventPersonalAccount {
-  final int id;
-  final PersonalAccountEntity item;
+  const factory EventPersonalAccount.delete(
+      {required int id, required PersonalAccountEntity item}) = EventPersonalAccountDeleteEvent;
 
-  PersonalAccountInsertEvent({required this.id, required this.item});
-}
-
-class PersonalAccountUpdateEvent extends EventPersonalAccount {
-  final int id;
-  final PersonalAccountEntity item;
-
-  PersonalAccountUpdateEvent({required this.id, required this.item});
-}
-
-class PersonalAccountDeleteEvent extends EventPersonalAccount {
-  final int id;
-  final PersonalAccountEntity item;
-
-  PersonalAccountDeleteEvent({required this.id, required this.item});
-}
-
-class UploadPersonalAccountEvent extends EventPersonalAccount {
-  final String pathStr;
-  UploadPersonalAccountEvent({required this.pathStr});
+  const factory EventPersonalAccount.upload({required String pathStr}) =
+      EventPersonalAccountUploadEvent;
 }

@@ -1,4 +1,4 @@
-import 'package:domain/core/usecase.dart';
+ import 'package:domain/core/usecase.dart';
 import 'package:domain/modules/street_house/entities/street_house_entity.dart';
 import 'package:domain/modules/street_house/repository/street_house_repository.dart';
 

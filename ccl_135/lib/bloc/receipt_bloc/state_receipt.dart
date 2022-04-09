@@ -1,21 +1,10 @@
 
+part of 'bloc_receipt.dart';
 
-import 'package:domain/modules/receipt/entities/receipt_entity.dart';
-
-abstract class StateReceipt {}
-
-class ReceiptEmptyState extends StateReceipt {}
-
-class ReceiptLoading extends StateReceipt {}
-
-class ReceiptLoaded extends StateReceipt {
-  final List<ReceiptEntity> list;
-
-  ReceiptLoaded({required this.list});
-}
-
-class ReceiptError extends StateReceipt {
-  final String message;
-
-  ReceiptError({required this.message});
+@freezed
+class StateReceipt with _$StateReceipt {
+  const factory StateReceipt.empty() =  _StateReceiptEmptyState;
+  const factory StateReceipt.loading() = _StateReceiptLoadingState;
+  const factory StateReceipt.loaded({required List<ReceiptEntity> list}) = _StateReceiptLoadedState;
+  const factory StateReceipt.error({required String message}) = _StateReceiptErrorState;
 }

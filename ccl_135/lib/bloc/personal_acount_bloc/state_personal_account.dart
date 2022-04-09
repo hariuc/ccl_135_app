@@ -1,19 +1,10 @@
-import 'package:domain/modules/personal_account/entities/personal_account_entity.dart';
 
-abstract class StatePersonalAccount {}
+part of 'bloc_personal_account.dart';
 
-class PersonalAccountEmptyState extends StatePersonalAccount {}
-
-class PersonalAccountLoading extends StatePersonalAccount {}
-
-class PersonalAccountLoaded extends StatePersonalAccount {
-  final List<PersonalAccountEntity> list;
-
-  PersonalAccountLoaded({required this.list});
-}
-
-class PersonalAccountError extends StatePersonalAccount {
-  final String message;
-
-  PersonalAccountError({required this.message});
+@freezed
+class StatePersonalAccount with _$StatePersonalAccount {
+  const factory StatePersonalAccount.empty() =  _StatePersonalAccountEmptyState;
+  const factory StatePersonalAccount.loading() = _StatePersonalAccountLoadingState;
+  const factory StatePersonalAccount.loaded({required List<PersonalAccountEntity> list}) = _StatePersonalAccountLoadedState;
+  const factory StatePersonalAccount.error({required String message}) = _StatePersonalAccountErrorState;
 }

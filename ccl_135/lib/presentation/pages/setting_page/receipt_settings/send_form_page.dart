@@ -1,5 +1,4 @@
 import 'package:ccl_135/bloc/email_bloc/email_bloc.dart';
-import 'package:ccl_135/bloc/email_bloc/email_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:scroll_date_picker/scroll_date_picker.dart';
@@ -46,7 +45,7 @@ class _SendFormPageState extends State<SendFormPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     final blocProvider = BlocProvider.of<EmailBloc>(context);
-                    blocProvider.add(SendAllEmailEvent(
+                    blocProvider.add(EmailEventSendAllEmails(
                         date1Str:
                             DateTime(_selectedDate.year, _selectedDate.month, 1)
                                 .toIso8601String(),

@@ -1,11 +1,11 @@
-abstract class EmailState {}
 
-class EmptyEmailState extends EmailState {}
+part of 'email_bloc.dart';
 
-class SuccessfullyEmailState extends EmailState {}
+@freezed
+class EmailState with _$EmailState {
+  const factory EmailState.empty() = _EmailStateEmpty;
 
-class ErrorEmailState extends EmailState {
-  final String message;
+  const factory EmailState.successfully() = _EmailStateSuccessfully;
 
-  ErrorEmailState({required this.message});
+  const factory EmailState.error({required String message}) = _EmailStateError;
 }

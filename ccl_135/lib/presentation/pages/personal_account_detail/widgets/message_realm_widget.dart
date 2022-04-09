@@ -1,5 +1,4 @@
 import 'package:ccl_135/bloc/email_bloc/email_bloc.dart';
-import 'package:ccl_135/bloc/email_bloc/email_event.dart';
 import 'package:ccl_135/presentation/pages/widgets/dialogs_and_messages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -68,7 +67,7 @@ class _MessageRealmWidgetState extends State<MessageRealmWidget> {
         ScaffoldMessenger.of(context).showSnackBar(snackBar2);
       }
     } else {
-      blocProvider.add(SendEmailEvent(
+      blocProvider.add(EmailEventSendEmail(
           text: text, recipients: [widget.email], subject: 'CCL 135'));
     }
   }

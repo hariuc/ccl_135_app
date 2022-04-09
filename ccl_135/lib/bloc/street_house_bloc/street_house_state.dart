@@ -1,19 +1,10 @@
-import 'package:domain/modules/street_house/entities/street_house_entity.dart';
 
-abstract class StreetHouseState {}
+part of 'street_house_bloc.dart';
 
-class StreetHouseEmptyState extends StreetHouseState {}
-
-class StreetHouseLoading extends StreetHouseState {}
-
-class StreetHouseLoaded extends StreetHouseState {
-  final List<StreetHouseEntity> list;
-
-  StreetHouseLoaded({required this.list});
-}
-
-class StreetHouseError extends StreetHouseState {
-  final String message;
-
-  StreetHouseError({required this.message});
+@freezed
+class StreetHouseState with _$StreetHouseState {
+  const factory StreetHouseState.empty() =  _StreetHouseStateEmptyState;
+  const factory StreetHouseState.loading() = _StreetHouseStateLoadingState;
+  const factory StreetHouseState.loaded({required List<StreetHouseEntity> list}) = _StreetHouseStateLoadedState;
+  const factory StreetHouseState.error({required String message}) = _StreetHouseStateErrorState;
 }

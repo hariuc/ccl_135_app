@@ -1,36 +1,17 @@
-import 'package:domain/modules/receipt/entities/receipt_entity.dart';
+part of 'bloc_receipt.dart';
 
-abstract class EventReceipt {}
+@freezed
+class EventReceipt with _$EventReceipt {
+  const factory EventReceipt.load({required int id}) = EventReceiptLoadEvent;
 
-class ReceiptLoadEvent extends EventReceipt {
-  final int id;
+  const factory EventReceipt.insert({required int id, required ReceiptEntity item}) =
+      EventReceiptInsertEvent;
 
-  ReceiptLoadEvent({required this.id});
-}
+  const factory EventReceipt.update({required int id, required ReceiptEntity item}) =
+      EventReceiptUpdateEvent;
 
-class ReceiptInsertEvent extends EventReceipt {
-  final int id;
-  final ReceiptEntity item;
+  const factory EventReceipt.delete({required int id, required ReceiptEntity item}) =
+      EventReceiptDeleteEvent;
 
-  ReceiptInsertEvent({required this.id, required this.item});
-}
-
-class ReceiptUpdateEvent extends EventReceipt {
-  final int id;
-  final ReceiptEntity item;
-
-  ReceiptUpdateEvent({required this.id, required this.item});
-}
-
-class ReceiptDeleteEvent extends EventReceipt {
-  final int id;
-  final ReceiptEntity item;
-
-  ReceiptDeleteEvent({required this.id, required this.item});
-}
-
-class UploadReceiptEvent extends EventReceipt {
-  final String pathStr;
-
-  UploadReceiptEvent({required this.pathStr});
+  const factory EventReceipt.upload({required String pathStr}) = EventReceiptUploadEvent;
 }

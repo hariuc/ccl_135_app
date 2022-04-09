@@ -1,7 +1,5 @@
 import 'package:ccl_135/bloc/personal_acount_bloc/bloc_personal_account.dart';
-import 'package:ccl_135/bloc/personal_acount_bloc/event_personal_account.dart';
 import 'package:ccl_135/bloc/street_house_bloc/street_house_bloc.dart';
-import 'package:ccl_135/bloc/street_house_bloc/street_house_event.dart';
 import 'package:ccl_135/presentation/pages/setting_page/widgets/email_settings.dart';
 import 'package:ccl_135/presentation/pages/setting_page/widgets/pass_setting_widget.dart';
 import 'package:ccl_135/presentation/pages/widgets/widget_utils.dart';
@@ -96,7 +94,7 @@ class _SettingMainPageState extends State<SettingMainPage> {
       if (result != null) {
         final path = result.files.single.path;
         if (path != null) {
-          blocProvider.add(UploadStreetHouseEvent(pathStr: path));
+          blocProvider.add(StreetHouseUploadEvent(pathStr: path));
         }
       }
     } catch (e) {}
@@ -110,7 +108,7 @@ class _SettingMainPageState extends State<SettingMainPage> {
       if (result != null) {
         final path = result.files.single.path;
         if (path != null) {
-          blocProvider.add(UploadPersonalAccountEvent(pathStr: path));
+          blocProvider.add(EventPersonalAccountUploadEvent(pathStr: path));
         }
       }
     } catch (e) {}

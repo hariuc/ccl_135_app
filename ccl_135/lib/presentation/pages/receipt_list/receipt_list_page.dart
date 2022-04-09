@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:ccl_135/presentation/pages/common_widgets/common_indicator.dart';
 import 'package:ccl_135/presentation/pages/receipt_detail/receipt_detail_page.dart';
-import 'package:ccl_135/bloc/receipt_bloc/event_receipt.dart';
-import 'package:ccl_135/bloc/receipt_bloc/state_receipt.dart';
 import 'package:domain/modules/personal_account/entities/personal_account_entity.dart';
 import 'package:domain/modules/receipt/entities/receipt_entity.dart';
 import 'package:flutter/material.dart';
@@ -27,38 +25,26 @@ class _ReceiptListPageState extends State<ReceiptListPage> {
   @override
   void initState() {
     super.initState();
-    final blocProvider = BlocProvider.of<BlocReceipt>(context);
-    blocProvider.add(ReceiptLoadEvent(id: widget.personalAccountEntity.id));
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      final blocProvider = BlocProvider.of<BlocReceipt>(context);
+      blocProvider.add(EventReceiptLoadEvent(id: widget.personalAccountEntity.id));
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    //final locale = Platform.localeName;
     final _dateFormat = DateFormat(_formatPatern, Platform.localeName);
-    return BlocBuilder<BlocReceipt, StateReceipt>(
-      builder: (context, state) {
-        if (state is ReceiptEmptyState) {
-          return Center(
-            child: Text('ReceiptEmptyState'),
-          );
-        }
-        if (state is ReceiptLoading) {
-          return CommonIndicator();
-        }
-
-        if (state is ReceiptError) {
-          return Center(
-            child: Text('ReceiptError'),
-          );
-        }
-
-        if (state is ReceiptLoaded) {
-          final list = state.list;
-          final count = list.length;
+    final state = context.watch<BlocReceipt>().state;
+    return state.when(
+        empty: () => Center(
+              child: Text('ReceiptEmptyState'),
+            ),
+        loading: () => CommonIndicator(),
+        loaded: (list) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListView.builder(
-                itemCount: count,
+                itemCount: list.length,
                 itemBuilder: (context, index) {
                   return Card(
                     child: ListTile(
@@ -74,11 +60,10 @@ class _ReceiptListPageState extends State<ReceiptListPage> {
                   );
                 }),
           );
-        }
-
-        return SizedBox.shrink();
-      },
-    );
+        },
+        error: (errorMessage) => Center(
+              child: Text(errorMessage),
+            ));
   }
 
   void onPressed({required ReceiptEntity receiptEntity}) async {

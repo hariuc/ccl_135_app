@@ -1,5 +1,4 @@
 import 'package:ccl_135/bloc/personal_acount_bloc/bloc_personal_account.dart';
-import 'package:ccl_135/bloc/personal_acount_bloc/event_personal_account.dart';
 import 'package:ccl_135/presentation/pages/personal_account_detail/widgets/message_realm_widget.dart';
 import 'package:ccl_135/presentation/pages/receipt_list/receipt_list_page.dart';
 import 'package:domain/modules/personal_account/entities/personal_account_entity.dart';
@@ -9,13 +8,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class PersonalAccountDetailPage extends StatefulWidget {
   final PersonalAccountEntity personalAccountEntity;
 
-  const PersonalAccountDetailPage(
-      {required this.personalAccountEntity, Key? key})
+  const PersonalAccountDetailPage({required this.personalAccountEntity, Key? key})
       : super(key: key);
 
   @override
-  _PersonalAccountDetailPageState createState() =>
-      _PersonalAccountDetailPageState();
+  _PersonalAccountDetailPageState createState() => _PersonalAccountDetailPageState();
 }
 
 class _PersonalAccountDetailPageState extends State<PersonalAccountDetailPage> {
@@ -25,10 +22,12 @@ class _PersonalAccountDetailPageState extends State<PersonalAccountDetailPage> {
   @override
   void initState() {
     super.initState();
-    blocProvider = BlocProvider.of<BlocPersonalAccount>(context);
-    _controller.text = widget.personalAccountEntity.emailAddress == null
-        ? ''
-        : widget.personalAccountEntity.emailAddress!;
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      blocProvider = BlocProvider.of<BlocPersonalAccount>(context);
+      _controller.text = widget.personalAccountEntity.emailAddress == null
+          ? ''
+          : widget.personalAccountEntity.emailAddress!;
+    });
   }
 
   @override
@@ -81,7 +80,9 @@ class _PersonalAccountDetailPageState extends State<PersonalAccountDetailPage> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: MessageRealmWidget(email: _controller.text.trim(),),
+            child: MessageRealmWidget(
+              email: _controller.text.trim(),
+            ),
           ),
           Expanded(
             child: Container(
@@ -97,8 +98,7 @@ class _PersonalAccountDetailPageState extends State<PersonalAccountDetailPage> {
 
   void pressButtonSave() {
     widget.personalAccountEntity.emailAddress = _controller.text;
-    blocProvider.add(PersonalAccountUpdateEvent(
-        id: widget.personalAccountEntity.streetHouseId,
-        item: widget.personalAccountEntity));
+    blocProvider.add(EventPersonalAccountUpdateEvent(
+        id: widget.personalAccountEntity.streetHouseId, item: widget.personalAccountEntity));
   }
 }

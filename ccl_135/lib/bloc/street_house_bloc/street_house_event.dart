@@ -1,29 +1,18 @@
-import 'package:domain/modules/street_house/entities/street_house_entity.dart';
 
-abstract class StreetHouseEvent {}
+part of 'street_house_bloc.dart';
 
-class StreetHouseLoadEvent extends StreetHouseEvent {}
+@freezed
+class StreetHouseEvent with _$StreetHouseEvent {
+  const factory StreetHouseEvent.load() = StreetHouseLoadEvent;
 
-class StreetHouseInsertEvent extends StreetHouseEvent {
-  final StreetHouseEntity streetHouseEntity;
+  const factory StreetHouseEvent.insert({required StreetHouseEntity streetHouseEntity}) =
+      StreetHouseInsertEvent;
 
-  StreetHouseInsertEvent({required this.streetHouseEntity});
-}
+  const factory StreetHouseEvent.update({required StreetHouseEntity streetHouseEntity}) =
+      StreetHouseUpdateEvent;
 
-class StreetHouseUpdateEvent extends StreetHouseEvent {
-  final StreetHouseEntity streetHouseEntity;
+  const factory StreetHouseEvent.delete({required StreetHouseEntity streetHouseEntity}) =
+      StreetHouseDeleteEvent;
 
-  StreetHouseUpdateEvent({required this.streetHouseEntity});
-}
-
-class StreetHouseDeleteEvent extends StreetHouseEvent {
-  final StreetHouseEntity streetHouseEntity;
-
-  StreetHouseDeleteEvent({required this.streetHouseEntity});
-}
-
-class UploadStreetHouseEvent extends StreetHouseEvent {
-  final String pathStr;
-
-  UploadStreetHouseEvent({required this.pathStr});
+  const factory StreetHouseEvent.upload({required String pathStr}) = StreetHouseUploadEvent;
 }
