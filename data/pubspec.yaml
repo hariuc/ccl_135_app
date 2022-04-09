@@ -15,12 +15,15 @@ dependencies:
   common:
     path: ../common
 
+  freezed: ^1.1.1
+  freezed_annotation: ^1.1.0
   get_it: ^7.2.0
   json_annotation: ^4.4.0
   sqflite: ^2.0.1
   path_provider: ^2.0.8
   shared_preferences: ^2.0.11
   mailer: ^5.0.2
+
 
 
 

@@ -6,8 +6,8 @@ part of 'receipt_local_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ReceiptLocalDto _$ReceiptLocalDtoFromJson(Map<String, dynamic> json) =>
-    ReceiptLocalDto(
+_$_ReceiptLocalDto _$$_ReceiptLocalDtoFromJson(Map<String, dynamic> json) =>
+    _$_ReceiptLocalDto(
       id: json['id'] as int?,
       personalAccountId: json['personal_account_id'] as int,
       dateTimeReceipt: json['date_receipt'] as String,
@@ -35,7 +35,7 @@ ReceiptLocalDto _$ReceiptLocalDtoFromJson(Map<String, dynamic> json) =>
       recalculationAmount: (json['recalculation_amount'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$ReceiptLocalDtoToJson(ReceiptLocalDto instance) =>
+Map<String, dynamic> _$$_ReceiptLocalDtoToJson(_$_ReceiptLocalDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'personal_account_id': instance.personalAccountId,
