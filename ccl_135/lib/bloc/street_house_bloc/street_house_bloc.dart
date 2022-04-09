@@ -2,31 +2,21 @@ import 'dart:async';
 
 import 'package:ccl_135/bloc/street_house_bloc/street_house_event.dart';
 import 'package:ccl_135/bloc/street_house_bloc/street_house_state.dart';
-import 'package:domain/modules/street_house/usecases/delete_street_house_usecase.dart';
-import 'package:domain/modules/street_house/usecases/get_street_house_usecase.dart';
-import 'package:domain/modules/street_house/usecases/insert_street_house_usecase.dart';
+import 'package:domain/modules/street_house/repository/street_house_repository.dart';
 import 'package:domain/modules/street_house/usecases/update_street_house_usecase.dart';
 import 'package:domain/modules/street_house/usecases/upload_street_house_data_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class StreetHouseBloc extends Bloc<StreetHouseEvent, StreetHouseState> {
-  final GetStreetHouseUsecase getStreetHouseUsecase;
-  final InsertStreetHouseUsecase insertStreetHouseUsecase;
-  final UpdateStreetHouseUsecase updateStreetHouseUsecase;
-  final DeleteStreetHouseUsecase deleteStreetHouseUsecase;
-  final UploadStreetHouseDataUsecase uploadStreetHouseDataUsecase;
+  final StreetHouseRepository repository;
 
   StreetHouseBloc({
-    required this.getStreetHouseUsecase,
-    required this.insertStreetHouseUsecase,
-    required this.updateStreetHouseUsecase,
-    required this.deleteStreetHouseUsecase,
-    required this.uploadStreetHouseDataUsecase,
+    required this.repository,
   }) : super(StreetHouseEmptyState()) {
     on<StreetHouseLoadEvent>((event, emit) async {
       emit(StreetHouseLoading());
       try {
-        final list = await getStreetHouseUsecase.call();
+        final list = await repository.getStreetHouse(); //getStreetHouseUsecase.call();
         emit(StreetHouseLoaded(list: list));
       } catch (e) {
         emit(StreetHouseError(message: 'Error'));
@@ -43,12 +33,11 @@ class StreetHouseBloc extends Bloc<StreetHouseEvent, StreetHouseState> {
       StreetHouseInsertEvent event, Emitter<StreetHouseState> emitter) async {
     emit(StreetHouseLoading());
     try {
-      await insertStreetHouseUsecase
-          .call(InsertParams(streetHouseEntity: event.streetHouseEntity));
-      final list = await getStreetHouseUsecase.call();
+      await repository.insertStreetHouseUsecase(streetHouseEntity: event.streetHouseEntity);
+      final list = await repository.getStreetHouse();
       emit(StreetHouseLoaded(list: list));
     } catch (e) {
-      emit(StreetHouseError(message: 'Error'));
+      emit(StreetHouseError(message: '${e.toString()}'));
     }
   }
 
@@ -57,11 +46,11 @@ class StreetHouseBloc extends Bloc<StreetHouseEvent, StreetHouseState> {
     emit(StreetHouseLoading());
     try {
       final params = UpdateParams(streetHouseEntity: event.streetHouseEntity);
-      await updateStreetHouseUsecase.call(params);
-      final list = await getStreetHouseUsecase.call();
+      await repository.updateStreetHouseUsecase(streetHouseEntity: event.streetHouseEntity);
+      final list = await repository.getStreetHouse();
       emit(StreetHouseLoaded(list: list));
     } catch (e) {
-      emit(StreetHouseError(message: 'Error'));
+      emit(StreetHouseError(message: '${e.toString()}'));
     }
   }
 
@@ -69,12 +58,11 @@ class StreetHouseBloc extends Bloc<StreetHouseEvent, StreetHouseState> {
       StreetHouseDeleteEvent event, Emitter<StreetHouseState> emitter) async {
     emit(StreetHouseLoading());
     try {
-      final params = DeleteParams(streetHouseEntity: event.streetHouseEntity);
-      await deleteStreetHouseUsecase.call(params);
-      final list = await getStreetHouseUsecase.call();
+      await repository.deleteStreetHouseUsecase(streetHouseEntity: event.streetHouseEntity);
+      final list = await repository.getStreetHouse();
       emit(StreetHouseLoaded(list: list));
     } catch (e) {
-      emit(StreetHouseError(message: 'Error'));
+      emit(StreetHouseError(message: '${e.toString()}'));
     }
   }
 
@@ -82,11 +70,11 @@ class StreetHouseBloc extends Bloc<StreetHouseEvent, StreetHouseState> {
       UploadStreetHouseEvent event, Emitter<StreetHouseState> emitter) async {
     try {
       final params = UploadStreetHouseDataParams(pathStr: event.pathStr);
-      await uploadStreetHouseDataUsecase.call(params);
-      final list = await getStreetHouseUsecase.call();
+      await repository.uploadStreetHouseData(pathStr: event.pathStr);
+      final list = await repository.getStreetHouse();
       emit(StreetHouseLoaded(list: list));
     } catch (e) {
-      emit(StreetHouseError(message: 'Error'));
+      emit(StreetHouseError(message: '${e.toString()}'));
     }
   }
 }
