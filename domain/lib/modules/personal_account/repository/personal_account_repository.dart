@@ -1,3 +1,5 @@
+
+
 import 'package:domain/modules/personal_account/entities/personal_account_entity.dart';
 
 abstract class PersonalAccountRepository {

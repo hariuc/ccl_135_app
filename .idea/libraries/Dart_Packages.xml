@@ -6,7 +6,6 @@
           <value>
             <list>
               <option value="$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-32.0.0/lib" />
-              <option value="$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-31.0.0/lib" />
               <option value="$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-38.0.0/lib" />
             </list>
           </value>
@@ -15,7 +14,6 @@
           <value>
             <list>
               <option value="$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-3.0.0/lib" />
-              <option value="$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-2.8.0/lib" />
               <option value="$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-3.4.1/lib" />
             </list>
           </value>
@@ -851,10 +849,8 @@
       </option>
     </properties>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-31.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-32.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-38.0.0/lib" />
-      <root url="file://$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-2.8.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-3.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-3.4.1/lib" />
       <root url="file://$PROJECT_DIR$/../../../FlutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/args-2.3.0/lib" />

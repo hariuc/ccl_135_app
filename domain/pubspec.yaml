@@ -8,6 +8,8 @@ environment:
 
 
 dependencies:
+  freezed: ^1.1.1
+  freezed_annotation: ^1.1.0
   get_it: ^7.2.0
   dartz: ^0.10.0
   json_annotation: ^4.4.0

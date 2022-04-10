@@ -1,67 +1,36 @@
 import 'package:domain/core/entity.dart';
-import 'package:domain/modules/personal_account/entities/personal_account_entity.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'receipt_entity.g.dart';
+part 'receipt_entity.freezed.dart';
 
-@JsonSerializable()
-class ReceiptEntity extends Entity {
-  final int? id;
-  //final PersonalAccountEntity personalAccountEntity;
-  final int personalAccountId;
-  final DateTime dateTimeReceipt;
-  final double debt; //Долг
-  final double paidFor; //Оплачено
-  final double costCubeWater;
-  final double numberOfCubes;
-  final double amountWater;
-  final double elevatorBidAmount;
-  final int numberTenantsElevator;
-  final double amountElevator;
-  final double bidForGarbage;
-  final int numberTenants;
-  final double amountGarbage;
-  final double radioAmount;
-  final double antenaAmount;
-  final double amountEconomicCosts;
-  final double amountMajorRepairs;
-  final double costCubeWater1;
-  final double amountAdditionalCosts;
-  final double amountBank;
-  final double amountTotal;
-  final double debtEndMonth;
-  final double recalculationAmount;
-
-  ReceiptEntity({
-    this.id,
-    //required this.personalAccountEntity,
-    required this.personalAccountId,
-    required this.dateTimeReceipt,
-    required this.debt,
-    required this.paidFor,
-    required this.costCubeWater,
-    required this.numberOfCubes,
-    required this.amountWater,
-    required this.elevatorBidAmount,
-    required this.numberTenantsElevator,
-    required this.amountElevator,
-    required this.bidForGarbage,
-    required this.numberTenants,
-    required this.amountGarbage,
-    required this.radioAmount,
-    required this.antenaAmount,
-    required this.amountEconomicCosts,
-    required this.amountMajorRepairs,
-    required this.costCubeWater1,
-    required this.amountAdditionalCosts,
-    required this.amountBank,
-    required this.amountTotal,
-    required this.debtEndMonth,
-    required this.recalculationAmount,
-  });
-
-  factory ReceiptEntity.fromJson(Map<String, dynamic> json) =>
-      _$ReceiptEntityFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ReceiptEntityToJson(this);
+@freezed
+class ReceiptEntity with _$ReceiptEntity implements Entity {
+  factory ReceiptEntity({
+    final int? id,
+    required int personalAccountId,
+    required DateTime dateTimeReceipt,
+    required double debt, //Долг
+    required double paidFor, //Оплачено
+    required double costCubeWater,
+    required double numberOfCubes,
+    required double amountWater,
+    required double elevatorBidAmount,
+    required int numberTenantsElevator,
+    required double amountElevator,
+    required double bidForGarbage,
+    required int numberTenants,
+    required  double amountGarbage,
+    required double radioAmount,
+    required double antenaAmount,
+    required  double amountEconomicCosts,
+    required double amountMajorRepairs,
+    required double costCubeWater1,
+    required double amountAdditionalCosts,
+    required double amountBank,
+    required double amountTotal,
+    required double debtEndMonth,
+    required double recalculationAmount,
+  }) = _ReceiptEntity;
+  
 }
+

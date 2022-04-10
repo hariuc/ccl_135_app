@@ -97,7 +97,7 @@ class _PersonalAccountDetailPageState extends State<PersonalAccountDetailPage> {
   }
 
   void pressButtonSave() {
-    widget.personalAccountEntity.emailAddress = _controller.text;
+    widget.personalAccountEntity.copyWith(emailAddress: _controller.text);
     blocProvider.add(EventPersonalAccountUpdateEvent(
         id: widget.personalAccountEntity.streetHouseId, item: widget.personalAccountEntity));
   }

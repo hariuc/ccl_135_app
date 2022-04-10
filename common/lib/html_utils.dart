@@ -10,22 +10,9 @@ class HtmlUtils {
     final strBuffer = StringBuffer();
     strBuffer.write(
         "<h3>Bon de plata pe luna ${FormatDateUtils.createFormatDate(dateTime: receiptEntity.dateTimeReceipt)}</h3>");
-    // strBuffer.write(
-    //     "<h3>CODUL CONTRAGENTULUI --- ${receiptEntity.personalAccountId.toString()}</h3>");
 
     strBuffer.write(
         "<h4>CCL-135 (C.F. 1004600015722) <br> IBAN MD65AG000000022513441974 MAIB Suc.Chisinau Centru <br>IBAN MD09ML000000002251912202 BC Moldindconbank fil.Renast<br><b>or.Chisinau ${personalAccountEntity.streetName}/2 ap. ${personalAccountEntity.apartmentNumber}</b><br><b>Numele,prenumele ${personalAccountEntity.name}</b><br><b>Datorii la inceputul lunii	${receiptEntity.debt.toStringAsFixed(2)}	Achitat ${receiptEntity.paidFor.toStringAsFixed(2)}</b></h4>");
-    //strBuffer.write("<h3>IBAN MD65AG000000022513441974 MAIB Suc.Chisinau Centru</h3>");
-    //strBuffer.write("<h3>IBAN MD09ML000000002251912202 BC Moldindconbank fil.Renast</h3>");
-    //strBuffer.write("<br>");
-    // strBuffer.write(
-    //     "<b>or.Chisinau ${personalAccountEntity.streetName}/2 ap. ${personalAccountEntity.apartmentNumber}</b>");
-    // strBuffer.write("<br>");
-    // strBuffer.write("<b>Numele,prenumele ${personalAccountEntity.name}</b>");
-    // strBuffer.write("<br>");
-    // strBuffer.write(
-    //     "<b>Datorii la inceputul lunii	${receiptEntity.debt.toStringAsFixed(2)}	Achitat ${receiptEntity.paidFor.toStringAsFixed(2)}</b>");
-    //strBuffer.write("");
     strBuffer.write("<table border='1'>"); //table
     strBuffer.write("<tr>"); //Head table
     strBuffer.write("<th></th>");
