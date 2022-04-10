@@ -1,4 +1,5 @@
 import 'package:ccl_135/bloc/email_bloc/email_bloc.dart';
+import 'package:ccl_135/presentation/pages/receipt_detail/widgets/r_widget.dart';
 import 'package:ccl_135/presentation/pages/widgets/dialogs_and_messages.dart';
 import 'package:common/html_utils.dart';
 import 'package:domain/modules/personal_account/entities/personal_account_entity.dart';
@@ -55,52 +56,52 @@ class ReceiptDetailPage extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
-              _createR1(),
+              const R1Widget(),
               Container(
                 decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
               ),
-              _createR2(),
+              R2Widget(receiptEntity: receiptEntity),
               Container(
                 decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
               ),
-              _createR3(),
+              R3Widget(receiptEntity: receiptEntity),
               Container(
                 decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
               ),
-              _createR4(),
+              R4Widget(receiptEntity: receiptEntity),
               Container(
                 decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
               ),
-              _createR5(),
+              R5Widget(receiptEntity: receiptEntity),
               Container(
                 decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
               ),
-              _createR6(),
+              R6Widget(receiptEntity: receiptEntity),
               Container(
                 decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
               ),
-              _createR7(),
+              R7Widget(receiptEntity: receiptEntity),
               Container(
                 decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
               ),
-              _createR8(),
+              R8Widget(receiptEntity: receiptEntity),
               Container(
                 decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
               ),
-              _createR9(),
+              R9Widget(receiptEntity: receiptEntity),
               Container(
                 decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
               ),
-              _createR10(),
+              R10Widget(receiptEntity: receiptEntity),
               Container(
                 decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
               ),
-              _createR13(),
+              R13Widget(receiptEntity: receiptEntity),
               Container(
                 decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 2)),
               ),
-              _createR11(),
-              _createR12(),
+              R11Widget(receiptEntity: receiptEntity),
+              R12Widget(receiptEntity: receiptEntity),
               const SizedBox(
                 height: 16,
               ),
@@ -121,209 +122,8 @@ class ReceiptDetailPage extends StatelessWidget {
     );
   }
 
-  Widget _createR1() {
-    return SizedBox(
-      height: 30,
-      child: Row(
-        children: [
-          Expanded(flex: 2, child: Text('')),
-          Expanded(
-              child: Text(
-            'Pretul',
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          )),
-          Expanded(child: Text('Cant.', style: const TextStyle(fontWeight: FontWeight.bold))),
-          Expanded(child: Text('Suma', style: const TextStyle(fontWeight: FontWeight.bold))),
-        ],
-      ),
-    );
-  }
-
-  Widget _createR2() {
-    return SizedBox(
-      height: 30,
-      child: Row(
-        children: [
-          Expanded(flex: 2, child: Text('Apa si canalizare')),
-          Expanded(child: Text('${receiptEntity.costCubeWater.toStringAsFixed(2)}')),
-          Expanded(child: Text('${receiptEntity.numberOfCubes.toStringAsFixed(2)}')),
-          Expanded(child: Text('${receiptEntity.amountWater.toStringAsFixed(2)}')),
-        ],
-      ),
-    );
-  }
-
-  Widget _createR3() {
-    return SizedBox(
-      height: 30,
-      child: Row(
-        children: [
-          Expanded(flex: 2, child: Text('Ascensor deservire')),
-          Expanded(child: Text('${receiptEntity.elevatorBidAmount.toStringAsFixed(2)}')),
-          Expanded(child: Text('${receiptEntity.numberTenantsElevator.toStringAsFixed(0)}')),
-          Expanded(child: Text('${receiptEntity.amountElevator.toStringAsFixed(2)}')),
-        ],
-      ),
-    );
-  }
-
-  Widget _createR4() {
-    return SizedBox(
-      height: 30,
-      child: Row(
-        children: [
-          Expanded(flex: 2, child: Text('Deseuri')),
-          Expanded(child: Text('${receiptEntity.bidForGarbage.toStringAsFixed(2)}')),
-          Expanded(child: Text('${receiptEntity.numberTenants.toStringAsFixed(0)}')),
-          Expanded(child: Text('${receiptEntity.amountGarbage.toStringAsFixed(2)}')),
-        ],
-      ),
-    );
-  }
-
-  Widget _createR5() {
-    return SizedBox(
-      height: 30,
-      child: Row(
-        children: [
-          Expanded(flex: 2, child: Text('Radio')),
-          Expanded(child: Text('')),
-          Expanded(child: Text('')),
-          Expanded(child: Text('${receiptEntity.radioAmount.toStringAsFixed(2)}')),
-        ],
-      ),
-    );
-  }
-
-  Widget _createR6() {
-    return SizedBox(
-      height: 30,
-      child: Row(
-        children: [
-          Expanded(flex: 2, child: Text('Antena')),
-          Expanded(child: Text('')),
-          Expanded(child: Text('')),
-          Expanded(child: Text('${receiptEntity.antenaAmount.toStringAsFixed(2)}')),
-        ],
-      ),
-    );
-  }
-
-  Widget _createR7() {
-    return SizedBox(
-      height: 30,
-      child: Row(
-        children: [
-          Expanded(flex: 2, child: Text('Chelt.gospodaresti')),
-          Expanded(child: Text('')),
-          Expanded(child: Text('')),
-          Expanded(child: Text('${receiptEntity.amountEconomicCosts.toStringAsFixed(2)}')),
-        ],
-      ),
-    );
-  }
-
-  Widget _createR8() {
-    return SizedBox(
-      height: 30,
-      child: Row(
-        children: [
-          Expanded(flex: 2, child: Text('Intretinerea blocurilor')),
-          Expanded(child: Text('')),
-          Expanded(child: Text('')),
-          Expanded(child: Text('${receiptEntity.amountMajorRepairs.toStringAsFixed(2)}')),
-        ],
-      ),
-    );
-  }
-
-  Widget _createR9() {
-    return SizedBox(
-      height: 30,
-      child: Row(
-        children: [
-          Expanded(flex: 2, child: Text('Surplus de apa')),
-          Expanded(child: Text('${receiptEntity.costCubeWater1.toStringAsFixed(2)}')),
-          Expanded(child: Text('')),
-          Expanded(child: Text('${receiptEntity.amountAdditionalCosts.toStringAsFixed(2)}')),
-        ],
-      ),
-    );
-  }
-
-  Widget _createR10() {
-    return SizedBox(
-      height: 30,
-      child: Row(
-        children: [
-          Expanded(flex: 2, child: Text('Comision bancar')),
-          Expanded(child: Text('')),
-          Expanded(child: Text('')),
-          Expanded(child: Text('${receiptEntity.amountBank.toStringAsFixed(2)}')),
-        ],
-      ),
-    );
-  }
-
-  Widget _createR11() {
-    return SizedBox(
-      height: 30,
-      child: Row(
-        children: [
-          Expanded(
-              flex: 2,
-              child: Text(
-                'Total calculat lunar',
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              )),
-          Expanded(child: Text('')),
-          Expanded(child: Text('')),
-          Expanded(
-              child: Text(
-            '${receiptEntity.amountTotal.toStringAsFixed(2)}',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          )),
-        ],
-      ),
-    );
-  }
-
-  Widget _createR12() {
-    return SizedBox(
-      height: 30,
-      child: Row(
-        children: [
-          Expanded(
-              flex: 2,
-              child: Text('Datorii la sfirsitul lunii',
-                  style: const TextStyle(fontWeight: FontWeight.bold))),
-          Expanded(child: Text('')),
-          Expanded(child: Text('')),
-          Expanded(
-              child: Text('${receiptEntity.debtEndMonth.toStringAsFixed(2)}',
-                  style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold))),
-        ],
-      ),
-    );
-  }
-
-  Widget _createR13() {
-    return SizedBox(
-      height: 30,
-      child: Row(
-        children: [
-          Expanded(flex: 2, child: Text('Recalcularea')),
-          Expanded(child: Text('')),
-          Expanded(child: Text('')),
-          Expanded(child: Text('${receiptEntity.recalculationAmount.toStringAsFixed(2)}')),
-        ],
-      ),
-    );
-  }
-
   void pressButtonSendEmail(
       {required BuildContext context, required ReceiptEntity receiptEntity}) async {
-
     final text = 'Bon de plata';
     final html = HtmlUtils.createHtmlText(
         personalAccountEntity: personalAccountEntity, receiptEntity: receiptEntity);
@@ -333,8 +133,8 @@ class ReceiptDetailPage extends StatelessWidget {
       ScaffoldMessenger.of(context).showSnackBar(snackBar1);
     } else {
       final blocProvider = BlocProvider.of<EmailBloc>(context);
-      blocProvider
-          .add(EmailEventSendEmail(text: text, recipients: [email], subject: 'CCL 135', html: html));
+      blocProvider.add(
+          EmailEventSendEmail(text: text, recipients: [email], subject: 'CCL 135', html: html));
     }
 
     // final state = blocProvider.state;

@@ -22,20 +22,12 @@ class ReceiptSettings extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            WidgetUtils.createListElement(
-                context: context,
-                title: 'Загрузка квитанций',
-                icon: Icon(Icons.upload_outlined),
-                callback: () {
-                  uploadReceipt(context: context);
-                }),
-            WidgetUtils.createListElement(
-                context: context,
-                title: 'Отправка квитанций на email',
-                icon: Icon(Icons.send),
-                callback: () {
-                  onPressed(context: context);
-                }),
+            CreateListElement(title: 'Загрузка квитанций', icon: Icon(Icons.upload_outlined), callback: (){
+              uploadReceipt(context: context);
+            },),
+            CreateListElement(title: 'Отправка квитанций на email', icon: Icon(Icons.send), callback: (){
+              onPressed(context: context);
+            },),
           ],
         ),
       ),

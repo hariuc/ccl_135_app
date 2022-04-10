@@ -11,7 +11,6 @@ class DrawerApp extends StatelessWidget {
     return Drawer(
       elevation: 2.0,
       child: Container(
-        //color: Color(Constants.colorWhite),
         child: Column(
           children: [
             _createDrawerHeader(),

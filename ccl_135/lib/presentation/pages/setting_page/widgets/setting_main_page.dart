@@ -67,20 +67,12 @@ class _SettingMainPageState extends State<SettingMainPage> {
             const SizedBox(
               height: 8,
             ),
-            WidgetUtils.createListElement(
-                context: context,
-                title: 'Загрузка жильцов',
-                icon: Icon(Icons.upload_outlined),
-                callback: () {
-                  uploadPersonalAccount(context: context);
-                }),
-            WidgetUtils.createListElement(
-                context: context,
-                title: 'Загрузка домов',
-                icon: Icon(Icons.upload_outlined),
-                callback: () {
-                  uploadHouses(context: context);
-                }),
+            CreateListElement(title: 'Загрузка жильцов', icon: Icon(Icons.upload_outlined), callback: (){
+              uploadPersonalAccount(context: context);
+            },),
+            CreateListElement(title: 'Загрузка домов', icon: Icon(Icons.upload_outlined), callback: (){
+              uploadHouses(context: context);
+            },),
           ],
         ),
       ),

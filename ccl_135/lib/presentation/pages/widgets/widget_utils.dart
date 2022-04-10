@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 
-class WidgetUtils{
-  static Widget createListElement(
-      {required BuildContext context,
-        required String title,
-        required Icon icon,
-        required VoidCallback callback}) =>
-      Card(
-        elevation: 3.0,
-        child: ListTile(
-          title: Text(title),
-          trailing: icon,
-          onTap: callback,
-        ),
-      );
+class CreateListElement extends StatelessWidget {
+  final String title;
+  final Icon icon;
+  final VoidCallback callback;
+
+  const CreateListElement(
+      {required this.title, required this.icon, required this.callback, Key? key})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 3.0,
+      child: ListTile(
+        title: Text(title),
+        trailing: icon,
+        onTap: callback,
+      ),
+    );
+  }
 }
